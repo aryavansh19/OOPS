@@ -1,21 +1,45 @@
-#include <iostream>
-using namespace std;
-int main()
-{
-    float unit = 0, bill = 0;
-    string name;
-    cout << "Enter " << " name of user and his unit:\n";
-    cin >> name >> unit;
-    if (unit <= 100)
-        bill = unit * 0.6;
-    else if (unit <= 300)
-        bill = 60 + (unit - 100) * 0.8;
-    else
-        bill = 220 + (unit - 300) * 0.9;
-    if (bill < 50)
-        bill = 50;
-    else if (bill > 300)
-        bill = bill + (bill * 0.15);
-    cout << name << " charges are: Rs " << bill << endl;
+#include<iostream>
 
+using namespace std;
+
+class users{
+	public:
+		string name;
+		int units;
+
+};
+
+int main(){
+
+	users member;
+	int charge=0;
+	
+	cout<<"Enter name: ";
+	cin>>member.name;
+	
+	cout<<"Enter Units: ";
+	cin>>member.units;
+	
+	if(member.units<=100){
+		charge=50 + 0.60*member.units;
+	}
+	
+	else if(member.units>100 && member.units<=300){
+		charge= 100* 0.60;
+		member.units=member.units-100;
+		charge+=50 + 0.80*member.units;
+	}
+	
+	else if(member.units>300){
+		charge=100*0.60 + 200*0.80;
+		member.units=member.units-300;
+		charge+=50 + 0.90*member.units;
+	}
+	
+	if(charge>300){
+		float surcharge= 0.15*charge;
+		charge+= surcharge;
+		}
+		
+	cout<<charge;
 }
